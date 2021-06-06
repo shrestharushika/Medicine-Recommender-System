@@ -1,0 +1,141 @@
+{%load static%}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+    </head>
+
+    <style>
+        table,td,tr {
+                border: 0.5px solid peru;
+                font-size:28px;
+                 }
+
+        table{
+               margin-top:5%;
+               background-color:wheat;
+              
+        } 
+
+        
+        #img{
+            height:34px;
+            width:35px;
+        } 
+        .img1{
+            height:105px;
+            width:105px;
+            float-left:5%;
+        }  
+
+        h1{
+            font-family:Times New Roman;
+            font-size:55px;
+        } 
+        h3{
+            font-family:Times New Roman;
+             font-size:28px;
+        }  
+
+        #bgr{
+            background-color:blanchedalmond;
+            width:20%;
+           
+        } 
+       
+       th{
+           background-color:palegreen;
+       }
+
+        .tableFixHead {
+        overflow-y: auto;
+        height: 45%;
+        width:55%;
+        margin-left:25%;
+        margin-top:5%;
+        margin-bottom:7%;
+      }
+
+       .tableFixHead thead th{
+           position:sticky;
+           top:0;
+       } 
+
+       
+       table{
+           border-collapse:collapse;
+           
+       } 
+{% comment %} for scroll bar {% endcomment %}
+      .tableFixHead{
+          overflow-y:auto; 
+         height:69%;
+      }
+
+        
+      
+      th,
+      td {
+        padding: 8px 16px;
+      }
+        
+    </style>
+        
+     
+        <body>
+            <center>
+                <h1><b>Patient Reviews</b></h1><br>
+                 <div id="bgr">
+                    <h3>Number of positive reviews  =  {{positive}}</h3>
+                    <h3>Number of neutral reviews   =  {{neutral}}</h3>
+                    <h3>Number of negative reviews  =  {{negative}}</h3>
+                 </div>
+            </center>
+            <div class="tableFixHead"> 
+                <table class="table">
+                    <thead >
+                            <tr class="table-success">
+                                <th>Reviews</th>
+                                <th>Sentiments</th>
+                                <th><img id="img" src="{% static 'css/sentiment.jpg' %}"/>EmoTags</th>
+                            </tr>
+                    </thead>
+
+                               
+                    <tbody>
+                               
+                        {%for i,j in sentiment%}
+                            <tr>
+                                <td > {{i}}</td>
+                                <td> {{j}}</td>
+
+                                {% ifequal j 'Negative'%}
+                                    <td class="col"><img class="img1" src="{% static 'css/negative.jpg'%}"><br><br></td>
+                                {% endifequal %}  
+
+                                {% ifequal j 'Positive' %}
+                                    <td><img class="img1" src="{% static 'css/positive.jpg' %}"></td>
+                                {% endifequal %}
+                                            
+                                {% ifequal j 'Neutral' %}
+                                    <td><img class="img1" src="{% static 'css/neutral.png' %}"></td>
+                                {% endifequal %}       
+                            </tr>   
+
+                        {% endfor %} 
+                               
+                    </tbody>
+                                
+                </table>     
+                   
+            </div>           
+                
+                
+        </body>
+        
+</html>

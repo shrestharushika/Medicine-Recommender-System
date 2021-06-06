@@ -1,0 +1,50 @@
+{% load static %}
+<html>
+    <head>
+        <title></title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    </head>
+
+    <style>
+        b{
+            font-size: 55px;
+        }
+        h2{
+                      
+            color:darkblue;
+            font-size:30px
+        }
+        #bgr{
+            background-color:white;
+            margin-top:5%;
+            width:26%;
+        }
+
+        
+    </style>
+    
+    
+    <div style="background-image:url('{%static 'css/img2.jpg' %}');background-position:absolute;background-size:cover;position:0% 0%;height:100%;width:100%;position:absolute">
+        <body>
+            <center> 
+                
+                
+                <div style="background-color:white;width:50%;opacity:1.2;margin-top:5%;border-radius:5px 54px;opacity:0.7; ">  
+                    <h2> We recommend Top 5 {{ search }} pills</h2>    
+                    {% for med in medicines%}
+                        {% for i in med%}
+                                <a href ="{% url 'RS:details' i %}"><b style="font-size:40px;color:rgb(153, 0, 51)">{{i}}</b><br><br></a>
+                        {% endfor %}    
+                    {% endfor %}
+                </div> 
+
+               <div id ="bgr"> <h2>Click here to get expert advice </h2></div><a href="{%url 'RS:expert_advice'%}"><b>Seek Advice<b></a>
+            </center>              
+        </body>
+    </div>    
+       
+</html>

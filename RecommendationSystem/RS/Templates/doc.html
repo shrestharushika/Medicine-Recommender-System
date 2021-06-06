@@ -1,0 +1,41 @@
+{%load static%}
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/css/3.2.0/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/css/3.2.0/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog5.css'%}">
+        <title>   Get expert advice </title>
+        
+    </head>
+    
+    <style>
+        h1{
+            margin-top:3%;
+            font-size:55px;
+            margin-left:15%;
+        }
+
+        #logout{
+            float:right;
+            margin-top:1%;
+            margin-right:7%;
+            font-size:25px
+        }
+    </style>
+     
+    <center >
+       <body>
+            <div id="logout"><a href="{% url 'RS:logout'%}">Logout</a></div> 
+            <h1> <b>Get expert advice </b></h1>
+            <div style="margin-top:7%">
+                <form method="POST" action="">
+                    {% csrf_token %}   
+                    <textarea type="text"  style="width:90%; height:50%; font-size:55px" name="txt" placeholder="Enter your query"></textarea> <br>
+                    
+
+                    <button style="height:4%; font-size:35px" type="submit" value="Send" class="form-control btn btn-primary">Send the message</button>
+                </form>
+            </div>
+        </body>
+    </center>
+</html>

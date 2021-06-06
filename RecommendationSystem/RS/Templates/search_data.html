@@ -1,0 +1,104 @@
+{%load static%}
+<html>
+    <head>
+        <title> Medicine Recommendation System </title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+
+    
+    <style>
+        #search{
+            
+            width:520px;
+            height:6%;
+            margin-top:4%;
+            font-family:Times New Roman;
+            font-size:42px;
+        }
+        .customize{
+             border-radius:24px;
+            margin-top:10%;
+            margin-left:42%;
+                   }
+        #filter{
+            border-radius:24px;
+            margin-left:0%;
+            width:5%;
+            height:6%;
+            background-color:
+        }   
+        .checked{
+            color:cyan;
+        }     
+        #star{
+            float-left-3%;
+        }
+        #head1{
+            width:100%;
+            height:15%;
+            background-color:lightgreen;
+        }
+        #btn{
+            background-color:blue;
+          
+            
+            font-size:35px;
+            color:white;
+            font-family:Times New Roman;
+        }
+
+        #logout{
+            float:right;
+            margin-top:1%;
+            margin-right:7%;
+            font-size:65px
+            font-family:Times New Roman;
+        }
+        b{
+            font-family:Times New Roman;
+        }
+        h2{
+            margin-top:9%;
+        }
+    </style>
+
+    <div style="background-image:url('{%static 'css/image (3).png' %}');background-position:absolute;background-size:cover;position:0% 0%;height:100%;width:100%;position:absolute">
+    
+    <body>
+
+        <div id="logout"><a href="{% url 'RS:logout'%}">Logout</a></div> 
+        <h1 style="margin-left:30%;margin-top:3%;font-family:Times New Roman;font-size:65px"><b>Welcome to Medicare {{user.username}},</b></h1>
+         <center>
+            <div style="margin-top:4%">
+                
+                <h2><b>Please tell us about the problem you are facing?</b></h2>
+            </div>    
+        <form method="POST" action="">
+             {% csrf_token %}
+             
+               
+                <input id ="search" name="search" placeholder="Search for medical condition"/><br>
+<br>                
+                
+                
+                <input type="submit" class="btn btn-primary" id="btn" class="btn btn-primary" value="Recommend Medicines"/>
+             
+          </center> 
+                
+                   
+                   
+
+                    
+
+            
+           
+         
+           
+        </form>
+
+        
+      
+    </body>
+    </div>
+</html>
