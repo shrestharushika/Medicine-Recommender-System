@@ -82,10 +82,14 @@ def recommendations(request,search):
    
     # Append medicines that matches the search
     dic={}
-    
+    dataset=dataset.dropna()
     #match the search
-    x=(dataset[dataset['condition']==search])
-
+    # x=(dataset[dataset['condition']==search])
+    
+    x=dataset[dataset['condition'].str.contains(search,case=False)]
+    
+    # if(len(x)==0):
+    #     x=drugs_train[drugs_train['condition'].str.contains('^[search]', case=False, regex=True)]
     # drop unnecessary columns
     data=['date','usefulCount']
     x=x.drop(data,axis=1)
@@ -117,11 +121,11 @@ def view_details(request,medicine):
     sentiment=[]
     d=[]
    
-   
-    
     d=dataset[dataset['drugName']==medicine]
+    
     rev= d['review']
-
+    
+    print(d)
    
     for i in rev:
         pred=[]
