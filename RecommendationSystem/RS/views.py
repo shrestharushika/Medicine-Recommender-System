@@ -171,8 +171,8 @@ def view_details(request,medicine):
     return HttpResponse(render(request,'details.html',posts))
 
 def expert_advice(request):
-        account_sid = 'ACf311c9794d7f4eef9dfcf01d6ecae0a1'
-        auth_token = 'fb5c280821285f3eea7eaef0599ee324'
+        account_sid = ''
+        auth_token = ''
         client = Client(account_sid, auth_token)
 
         if request.method=="POST":
@@ -181,8 +181,8 @@ def expert_advice(request):
             
             message = client.messages.create(
                                         body=query,
-                                        from_='+12676425402',
-                                        to='+918800718753'
+                                        from_='',
+                                        to=''
                                     )
                                     
             return redirect('/expert_advice')                    
